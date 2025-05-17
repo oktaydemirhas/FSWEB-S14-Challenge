@@ -20,7 +20,7 @@ public class MainTest {
 
     @BeforeEach
     void setUp() {
-        hamburger = new Hamburger("Basic", "NORMAL", 4, "WRAP");
+        hamburger = new Hamburger("Basic", 4.0, "WRAP");
         healthyBurger = new HealthyBurger("Vegan Burger", 5.67, "Sandwich");
         deluxeBurger = new DeluxeBurger();
     }
@@ -74,11 +74,13 @@ public class MainTest {
     @DisplayName("Hamburger sınıfı addAddition methodları doğru çalışıyor mu?")
     @Test
     public void testHamburgerAddAdditionMethods() throws NoSuchFieldException {
-        hamburger.addHamburgerAddition1("test", 3);
-        hamburger.addHamburgerAddition2("test", 3);
-        hamburger.addHamburgerAddition3("test", 3);
-        hamburger.itemizeHamburger();
-        assertEquals(hamburger.getPrice(), 13);
+        hamburger.addAddition1("test", 3.0);
+        hamburger.addAddition2("test", 3.0);
+        hamburger.addAddition3("test", 3.0);
+        double toplamFiyat = hamburger.itemizeHamburger();
+
+        //hamburger.itemizeHamburger();
+        assertEquals(13.0, toplamFiyat);
 
     }
 
@@ -92,9 +94,9 @@ public class MainTest {
     @DisplayName("Deluxe Burger sınıfı addAddition methodları doğru çalışıyor mu?")
     @Test
     public void testDeluxeBurgerAddAdditionMethods() throws NoSuchFieldException {
-        deluxeBurger.addHamburgerAddition1("test", 3);
-        deluxeBurger.addHamburgerAddition2("test", 3);
-        deluxeBurger.addHamburgerAddition3("test", 3);
+        deluxeBurger.addAddition1("test", 3);
+        deluxeBurger.addAddition2("test", 3);
+        deluxeBurger.addAddition3("test", 3);
         deluxeBurger.itemizeHamburger();
         assertEquals(deluxeBurger.getPrice(), 19.10);
     }
